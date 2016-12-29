@@ -29,7 +29,7 @@ root@liberty:/# vgs
 </br>
 On peut constater sur ce serveur qu'il y a deux VGS (volume groups). </br>
 Imaginons que vous voulons augmenter le /var/lib/mysql. </br>
-===> /dev/mapper/<strong>data</strong>-var_lib_mysql, on voit qu'il fait partie du VGS data. </br>
+===> /dev/mapper/<strong>data</strong>-var_lib_mysql, on voit qu'il fait partie du VG data. </br>
 ```bash
 # On ajoute 5go à /var/lib/mysql
 lvresize -L+5g /dev/mapper/data-var_lib_mysql && resize2fs /dev/mapper/data-var_lib_mysql
@@ -58,6 +58,6 @@ Sur la VM :
 # Création du physical volume
 pvcreate /dev/vdc
 
-# Extension du VGS que l'on souhaite aggrandir
+# Extension du VG que l'on souhaite agrandir
 vgextend systemvm /dev/vdc
 ```
