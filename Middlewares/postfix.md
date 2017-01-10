@@ -5,7 +5,7 @@ Middlewares - Postfix
 
   1) Add a line to your main.cf
   Code:
-̀̀```bash
+```bash
     header_checks = regexp:/etc/postfix/header_checks
 ```
 
