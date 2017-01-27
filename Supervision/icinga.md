@@ -43,6 +43,7 @@ $ make install
 
 apt-get install icingaweb2
 apt-get install icingacli
+apt-get install icingaweb2-module-monitoring icingaweb2-module-doc
 
 http://X.X.X.X/icingaweb2/authentication/login
 
@@ -70,6 +71,8 @@ icinga2 feature enable ido-mysql command
 
 ln -s /usr/local/etc/init.d/icinga2 /etc/init.d/icinga2
 
+
+mysql -u root -p icinga_ido < mysql.sql
 
 ```
 
