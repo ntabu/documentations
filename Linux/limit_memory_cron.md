@@ -2,13 +2,13 @@ Linux - limit memory
 ==
 <br/>
 #### Comment limiter tous les crons au niveau memoire
-<ol> créer un utilisateur cron (crontest)
-<ol> ajouter la ligne suivante dans /etc/security/limits.conf
+<li> créer un utilisateur cron (crontest)
+<li> ajouter la ligne suivante dans /etc/security/limits.conf
 ```bash
 # Pour 50mo
 crontest        hard    as              50000
 ```
-<ol> Faire un petit script qui alloue de la mémoire (en C ou autres langages)
+<li> Faire un petit script qui alloue de la mémoire (en C ou autres langages)
 ```bash
 #include <malloc.h>
 #include <unistd.h>
@@ -30,7 +30,7 @@ gcc mem.c -o mem
 cp mem /bin/mem
 ```
 
-<ol> puis tester
+<li> puis tester
 ```bash
 * * * * * crontest /bin/mem
 #voir dans dmesg le comportement (kill out of memory)
