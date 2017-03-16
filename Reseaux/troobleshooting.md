@@ -1,8 +1,11 @@
 Réseaux - Troobleshooting
 ==
 <br/>
+
 Quelques commandes intéressantes pour dépanner un réseau.
+
 #### Rechercher d'informations IP
+
 ```bash
 # dig - Domain Information Groper
 # Interroge le serveur DNS de son choix (par défaut celui du /etc/resolv.conf)
@@ -18,6 +21,7 @@ Quelques commandes intéressantes pour dépanner un réseau.
 ```
 
 #### TCPDUMP
+
 ```bash
 
 # Je recupère une trame de n'importe quel interface sur l'host <ip>
