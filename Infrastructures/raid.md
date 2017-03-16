@@ -1,19 +1,27 @@
 Infrastructures - Raid
 ==
 <br/>
+
 Listing des informations lié à la partie RAID
+
 #### Afficher l etat du RAID
+
 ```bash
 MegaCli -LDInfo -LALL -aALL
 ```
 </br>
+
 #### Lister les informations sur la capacité de la batterie
+
 ```bash
 MegaCli -AdpBbuCmd -GetBbuCapacityInfo -aALL -noLog
 ```
 </br>
+
 #### Lister Disques/Slots/RAID
+
 ```bash
+
 MegaCli -PDList -aAll
 #Version courte
 MegaCli -PDList -aAll | egrep "Slot|Device ID|Enclosure"
@@ -27,12 +35,16 @@ MegaCli -CfgDsply -a0
 MegaCli -CfgDsply -a0 | grep "Device Id"
 ```
 </br>
+
 #### Test Smart (remplacer N par le device ID)
+
 ```bash
 smartctl -d megaraid,N -a /dev/sda
 ```
 </br>
+
 #### Gadgets
+
 ```bash
 MegaCli -PdLocate start -physdrv[32:2] -a0
 ```
