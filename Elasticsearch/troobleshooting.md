@@ -64,3 +64,20 @@ curl -XPOST 'localhost:9200/_cluster/reroute' -d '{
         ]
     }';
 ```
+
+#### Rolling restart
+
+```bash
+#arrêt de l'allocation des shards sur le node
+curl -XPUT http://localhost:9200/_cluster/settings -d '{"transient":{"cluster.routing.allocation.enable":"none"}}'
+
+#arrêt du node
+service elasticsearch restart
+
+#réassignement des shards sur le node
+curl -XPUT http://localhost:9200/_cluster/settings -d '{"transient":{"cluster.routing.allocation.enable":"all"}}'
+
+#vérification de l'état du cluster
+curl http://localhost:9200/_cluster/'health?pretty'
+
+```
