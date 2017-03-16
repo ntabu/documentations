@@ -1,6 +1,7 @@
 Linux - /dev/shm
 ==
 <br/>
+
 #### Qu'est ce que /dev/shm sous linux
 
 /dev/shm/ est un emplacement mémoire monté de la même manière qu'un disque dur, cependant aucune donnée ne sera enregistrée
