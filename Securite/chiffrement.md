@@ -1,7 +1,9 @@
 Securite - Chiffrement via OpenSSL
 ==
 <br/>
+
 #### Chiffer un fichier
+
 ```bash
 openssl enc -e -aes-256-cbc -in fichier -out fichier-chiffré
 #    enc : on précise qu’on va utiliser un algorithme de chiffrement
@@ -14,6 +16,7 @@ openssl enc -e -aes-256-cbc -in fichier -out fichier-chiffré
 ```
 
 #### Déchiffrer un fichier
+
 ```bash
 openssl enc -d -aes-256-cbc -in fichier-chiffré -out fichier-déchiffré
 ```
