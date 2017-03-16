@@ -4,8 +4,6 @@ Linux - Partitions
 
 Procèdure pour ajouter un disque
 
-<br/>
-
 #### Sous debian
 
 ```bash
