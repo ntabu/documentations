@@ -1,8 +1,11 @@
 Mysql - Replications master/slave
 ==
 <br/>
+
 Dans le cas d un master/slave
+
 #### Remise en place replication sur master bdd1
+
 ```bash
 # stop slave sur bdd2
 stop slave;

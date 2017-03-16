@@ -1,8 +1,11 @@
 Mysql - Replications
 ==
 <br/>
+
 Dans le cas d un master/master
+
 #### Remise en place replication sur master bdd2
+
 ```bash
 #stop slave sur bdd1
 mysql -e "stop slave;"
@@ -31,7 +34,7 @@ if [ ! -d /mnt/snap ] ; then mkdir /mnt/snap ; fi ; mount /dev/system/snap /mnt/
 rm /var/lib/mysql/master.info ; rm /var/lib/mysql/relay-log.info ; rm /var/log/mysql/mysql-bin.* ; rm /var/lib/mysql/mysqld-relay-bin.*
 
 #Suppression du /var/lib/mysql (attention il est conseiller de faire un dump ou un export des tables)
-rm -rf /var/lib/mysql/* ; rsync -a <ip_bdd1>:/mnt/snap/ /var/lib/mysql/ 
+rm -rf /var/lib/mysql/* ; rsync -a <ip_bdd1>:/mnt/snap/ /var/lib/mysql/
 
 #Boot de la bdd2
 service mysql start bdd2
