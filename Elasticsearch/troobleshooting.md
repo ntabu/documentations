@@ -2,7 +2,9 @@ ElasticSearch - TroobleShooting
 ==
 <br/>
 Quelques commandes permettant d avoir un maximun d informations sur ES
+
 #### Status du cluster
+
 ```bash
 curl -XGET 'http://localhost:9200/_cluster/health?pretty'
 {
