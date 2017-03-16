@@ -25,6 +25,7 @@ curl -XGET 'http://localhost:9200/_cluster/health?pretty'
 
 ```
 </br>
+
 #### Status des nodes
 
 ```bash
@@ -33,6 +34,7 @@ rickweb02 192.168.0.3 23 43 1.05 d m rickweb02
 carlweb01 192.168.0.2 10 51 1.09 d * carlweb01
 ```
 </br>
+
 #### Etat des index
 
 ```bash
@@ -41,6 +43,7 @@ health status index                             pri rep docs.count docs.deleted 
 green  open   sf_zombi_2016-04-12-200732   5   1    1258898       166350     20.7gb         10.3gb
 ```
 </br>
+
 #### Status des shards
 
 ```bash
@@ -49,6 +52,7 @@ sf_zombi_2016-04-12-200732 4 r STARTED 251532   2gb 192.168.0.2 srvweb01
 sf_zombi_2016-04-12-200732 4 p STARTED 251532   2gb 192.168.0.3 srvweb02
 ```
 </br>
+
 #### Cluster RED
 
 Généralement, quand un cluster ES est red, c'est peut être dû à un shard non assigné 'unassigned_shards' ou un shard en cours d'initialisaiton 'initializing_shards'.
