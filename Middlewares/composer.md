@@ -1,7 +1,9 @@
 Middlewares - Composer
 ==
 <br/>
+
 ```bash
+
 # Download l'installer dans le répertoire courant
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 
@@ -17,6 +19,7 @@ php -r "unlink('composer-setup.php');"
 ```
 
 Puis on place le .phar dans le path
+
 ```bash
 mv composer.phar /usr/local/bin/composer
 composer --version
