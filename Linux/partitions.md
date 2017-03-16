@@ -1,9 +1,13 @@
 Linux - Partitions
 ==
 <br/>
+
 Procèdure pour ajouter un disque
+
 <br/>
+
 #### Sous debian
+
 ```bash
 root@liberty:/# df -h
 Sys. de fichiers               Taille Utilisé Dispo Uti% Monté sur
@@ -26,19 +30,27 @@ root@liberty:/# vgs
   data       1   1   0 wz--n- 100,00g 10,00g
   systemvm   1   6   0 wz--n-  46,66g 27,70g
 ```
+
 </br>
+
 On peut constater sur ce serveur qu'il y a deux VGS (volume groups). </br>
 Imaginons que vous voulons augmenter le /var/lib/mysql. </br>
 ===> /dev/mapper/<strong>data</strong>-var_lib_mysql, on voit qu'il fait partie du VG data. </br>
+
 ```bash
+
 # On ajoute 5go à /var/lib/mysql
 lvresize -L+5g /dev/mapper/data-var_lib_mysql && resize2fs /dev/mapper/data-var_lib_mysql
 ```
+
 Si on veut ajouter 5go au /var/log </br>
+
 ```bash
+
 # On ajoute 5go à /var/log
 lvresize -L+5g /dev/mapper/systemvm-var_log && resize2fs /dev/mapper/systemvm-var_log
 ```
+
 </br>
 
 Pour ajouter un disque sur Proxmox (sous interface web) <br/>
@@ -46,11 +58,16 @@ On séléctionne la VM où l'on souhaite ajouter un nouveau disque dans Server v
 Dans l'onglet Hardware/Add/Hard Disk </br>
 On séléctionne le Storage, le format (qcow,qcow2,...), et la taille DD etc... Puis Add </br>
 On devrait retrouver dans la description quelques choses comme ça : </br>
+
 ```bash
+
 virtio1: VMs_hypliberty:115/vm-115-disk-0.qcow2,format=qcow2,size=50Gsize=50G
 ```
+
 </br>
+
 Sur la VM :
+
 ```bash
 # On récupère l'info via un dmesg -T
 [19783646.723135]  vdc: unknown partition table
