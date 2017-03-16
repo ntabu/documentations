@@ -1,7 +1,9 @@
 Shell - Opérateurs
 ==
 <br/>
+
 #### Opérateurs arithmétiques
+
 ```bash
     -eq (equal) : « égal à » (signe « = ») ;
     -ne (not equal) : « différent de » (signe « ≠ ») ;
