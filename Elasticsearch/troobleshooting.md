@@ -2,6 +2,7 @@ ElasticSearch - TroobleShooting
 ==
 <br/>
 Quelques commandes permettant d avoir un maximun d informations sur ES
+"?pretty" à la fin d'une commande permet une meilleur lecture des informations en sortie
 
 #### Status du cluster
 
