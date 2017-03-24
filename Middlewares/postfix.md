@@ -87,3 +87,26 @@ postmap /etc/postfix/generic
 /etc/init.d/postfix restart
 
 ```
+
+#### Empecher les mails d'être délivrés
+
+Afin d’empêcher les mails de certains domaines d’être délivrés, par exemple en cas de maintenance ou de migration du domaine, on peut laisser ces mails dans la queue en les mettant en status « HOLD » dans postfix. </br>
+
+Pour passer un domaine en HOLD, il faut modifier le fichier /etc/postfix/main.cf tel que ci-dessous et redémarrer postfix : </br>
+
+```bash
+smtpd_recipient_restrictions =
+    ...
+    check_recipient_access hash:/etc/postfix/hold
+
+# /etc/postfix/hold
+example1.com        HOLD
+example2.com         HOLD
+
+# application des changements
+postmap /etc/postfix/hold
+
+# pour libérer les mails en HOLD
+postsuper -r ALL
+
+```
