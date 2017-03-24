@@ -68,3 +68,22 @@ Listing des machines qui ont atteint la limite sur la journée en cours </br>
 /bin/cat /var/log/mail.log | grep "Message delivery request rate limit exceeded" |  grep "`date +%b' '%e`" | while read ligne ; do echo $ligne | awk '{print $(NF-5),"\t",$(NF-3)}' ; done | sort -k1 -g | uniq > /tmp/liste_rate_limit && for i in `/bin/cat /tmp/liste_rate_limit | cut -d'[' -f2 | cut -d ']' -f1 | sort | uniq`; do /bin/cat /tmp/liste_rate_limit | grep "$i" | sort -k1 -g | tail -1 ; done | sort -k1 -gr
 
 ```
+
+#### Changer l'adresse ou le domaine de destination postfix
+
+```bash
+
+# passe par trivial-rewrite
+# /etc/postfix/main.cf
+smtp_generic_maps = regexp:/etc/postfix/generic
+
+# /etc/postfix/main.cf
+/^.*@domain1.com/ user1@domain1.com # renvoyer le domaine vers un utilisateur spécifique
+/^.*@domain1.com/ $1@domain2.com    # renvoyer les mails de l'utilisateur de domain1.com vers domain2.com
+/^.*@.*/ user1@domain1.com          # tout renvoyer vers user1@domain1.com
+
+# activation de la conf
+postmap /etc/postfix/generic
+/etc/init.d/postfix restart
+
+```
