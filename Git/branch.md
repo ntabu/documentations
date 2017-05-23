@@ -25,6 +25,9 @@ Git - Branch
 # push sur une branche (master ou autre)
   git push
   git push --tags
+
+# historique des commits avec graphs
+  git log --color --stat --graph --oneline
 ```
 
 #### Ajout d'une branche
