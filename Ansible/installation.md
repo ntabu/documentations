@@ -42,3 +42,14 @@ localhost | SUCCESS => {
 }
 
 ```
+
+#### Installation standard préco par Ansible
+```bash
+vi /etc/apt/sources.list
+deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
+
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
+apt-get update
+apt-get install ansible
+
+```
