@@ -51,7 +51,7 @@ frontend www-http
         option forwardfor
         acl is_whitelist src 127.0.0.1                                                                                                                              
         acl authorized_ok http_auth(authorized)
-        http-request auth realm authorized if !is_FROM_PRISMA !authorized_ok
+        http-request auth realm authorized if !is_whitelist !authorized_ok
         use_backend bk_netflow if is_whitelist
         default_backend bk_netflow
 
