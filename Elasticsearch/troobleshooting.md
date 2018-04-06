@@ -80,6 +80,20 @@ curl -XPOST 'localhost:9200/_cluster/reroute' -d '{
     }';
 ```
 
+#### Assignement de réplicas à 0
+
+Penser à mettre dans les paramètres sur un standalone, le replica à 0
+```bash
+index.number_of_replicas: 0
+```
+
+```bash
+
+for i in $(curl -XGET http://localhost:9200/_cat/shards |grep UNA |awk {'print $1'}) ; do curl -XPUT 'localhost:9200/'$i'/_settings' -d '{"number_of_replicas": 0}' ; done
+
+```
+
+
 #### Rolling restart
 
 ```bash
@@ -95,4 +109,69 @@ curl -XPUT http://localhost:9200/_cluster/settings -d '{"transient":{"cluster.ro
 #vérification de l'état du cluster
 curl http://localhost:9200/_cluster/'health?pretty'
 
+```
+
+#### Informations Node
+
+https://www.elastic.co/guide/en/elasticsearch/guide/2.x/_monitoring_individual_nodes.html#_indices_section
+
+```bash
+
+curl -XGET "http://localhost:9200/_nodes/stats?pretty=true"
+
+curl -XGET "http://localhost:9200/_nodes/michonne/stats/indices/search?pretty"
+{   
+  "_nodes" : {
+    "total" : 1,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "cluster_name" : "walkingdead",
+  "nodes" : {
+    "nqiBMnhwTGWE3GQf-sHiQQ" : {
+      "timestamp" : 1523008174882,
+      "name" : "michonne",
+      "transport_address" : "10.0.16.60:9300",
+      "host" : "10.0.16.60",
+      "ip" : "10.0.16.60:9300",
+      "roles" : [
+        "master",
+        "data",
+        "ingest"
+      ],
+      "indices" : {
+        "search" : {
+          "open_contexts" : 0,
+          "query_total" : 1550,
+          "query_time_in_millis" : 375,
+          "query_current" : 0,
+          "fetch_total" : 1550,
+          "fetch_time_in_millis" : 211,
+          "fetch_current" : 0,
+          "scroll_total" : 0,
+          "scroll_time_in_millis" : 0,
+          "scroll_current" : 0,
+          "suggest_total" : 0,
+          "suggest_time_in_millis" : 0,
+          "suggest_current" : 0
+        }
+      }
+    }
+  }
+}  
+
+# search décrit le nombre de recherches actives (open_context),
+# le nombre total de requêtes et le temps passé sur les requêtes depuis le démarrage du nœud.
+# Le rapport entre query_time_in_millis / query_total peut être utilisé comme indicateur
+# approximatif de l'efficacité de vos requêtes. Plus le rapport est grand,
+# plus la durée de chaque requête est longue, et vous devriez envisager un réglage/optimisation.
+
+```
+
+#### Curator
+
+https://www.elastic.co/guide/en/elasticsearch/client/curator/5.x/command-line.html
+
+```bash
+curator delete --prefix <prefix> --older-than 7
 ```
