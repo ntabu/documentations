@@ -41,5 +41,3 @@ Middlewares - Varnish
 #### Expression regular - req.http.host
 
 https://docs.fastly.com/guides/vcl/vcl-regular-expression-cheat-sheet
-
-#### Ajouter des informations En-tête HTTP pour debug
