@@ -4,20 +4,24 @@ Middlewares - Varnish - Entêtes
 
 #### Ajouter des informations dans l’en-tête HTTP pour debugger
 
-Le but est de pouvoir vérifier si l'objet vient du cache ou pas.
-
-Dans le vcl_deliver :
+<li> Vérifier si l'objet vient du cache ou pas. </li>
 
 ```bash
+sub vcl_deliver {
 
-if (obj.hits > 0){
-      set resp.http.X-Varnish-Cache = "HIT";
-}else{
-      set resp.http.X-Varnish-Cache = "MISS";
+  if (obj.hits > 0){
+        set resp.http.X-Varnish-Cache = "HIT";
+  } else{
+        set resp.http.X-Varnish-Cache = "MISS";
+  }
 }
 
-# Pour vérifier si la request est passée par la routine PASS
+```
 
+
+<li> vérifier si la request est passée par la routine PASS </li>
+
+```bash
 sub vcl_pass {
         set req.http.X-marker = "pass" ;
 }
@@ -36,15 +40,23 @@ sub vcl_deliver {
         }
 }
 
-# Pour voir le TTL dans les Headers des objets :
+```
+
+<li> voir le TTL dans les Headers des objets </li>
+
+```bash
 
 sub vcl_fetch {
 
-set beresp.http.X-Varnish-TTL = beresp.ttl;
+  set beresp.http.X-Varnish-TTL = beresp.ttl;
 
 }
 
-# Pour voir le nom du serveur où se trouve varnish
+```
+
+<li> le nom du serveur où se trouve varnish </li>
+
+```bash
 
 sub vcl_fetch {
 
@@ -52,7 +64,11 @@ set beresp.http.X-Served-By = server.hostname;
 
 }
 
-# Pour voir le backend dans les en-têtes des objet
+```
+
+<li> le backend dans les en-têtes des objet </li>
+
+```bash
 
 sub vcl_fetch {
 
@@ -60,7 +76,12 @@ set beresp.http.Served-By = beresp.backend.name ;
 
 }
 
-# Pour voir le host et l’url dans les en-têtes des objets
+```
+
+<li> voir le host et l’url dans les en-têtes des objets </li>
+
+```bash
+
 sub vcl_fetch {
 set beresp.http.X-host = req.http.host;
 set beresp.http.X-url = req.url;
