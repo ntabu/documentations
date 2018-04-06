@@ -37,3 +37,9 @@ Middlewares - Varnish
 #### Astuces
 
 <li> Si le taux d'éviction augmente, cela signifie que le cache évacue les objets plus rapidement et plus vite en raison d'un manque d'espace.
+
+#### Expression regular - req.http.host
+
+https://docs.fastly.com/guides/vcl/vcl-regular-expression-cheat-sheet
+
+#### Ajouter des informations En-tête HTTP pour debug
