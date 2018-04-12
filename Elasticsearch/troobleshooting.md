@@ -170,7 +170,7 @@ curl -XGET "http://localhost:9200/_nodes/michonne/stats/indices/search?pretty"
 
 #### Modifications type de la configuration ES
 
-<li> Max thread coung </li>
+<li> Max thread count & throttle </li>
 
 Si ES prend trop d'io disk sur le système, on peut limiter ses écritures en modifiant le nombre de thread.
 
