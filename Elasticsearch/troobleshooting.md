@@ -168,6 +168,39 @@ curl -XGET "http://localhost:9200/_nodes/michonne/stats/indices/search?pretty"
 
 ```
 
+#### Modifications type de la configuration ES
+
+<li> Max thread coung </li>
+
+Si ES prend trop d'io disk sur le système, on peut limiter ses écritures en modifiant le nombre de thread.
+
+On peut également limiter le gouleau.
+
+```bash
+# Modifier le max thread count à 1
+curl -XPUT 'localhost:9200/_settings' -d '{ "index.merge.scheduler.max_thread_count" : 1}'
+
+# Voir la conf modifié sur l'ensemble des index - remplacer _all par l'index si on veut cibler
+curl -XGET 'http://localhost:9200/_all/_settings/index.merge.scheduler.max_*?pretty'
+
+# Modification du gouleau à 20mb
+PUT /_cluster/settings
+{
+    "persistent" : {
+        "indices.store.throttle.max_bytes_per_sec" : "20mb"
+    }
+}
+
+# Pas de limitations
+PUT /_cluster/settings
+{
+    "transient" : {
+        "indices.store.throttle.type" : "none" ￼
+    }
+}
+
+```
+
 #### Curator
 
 https://www.elastic.co/guide/en/elasticsearch/client/curator/5.x/command-line.html
