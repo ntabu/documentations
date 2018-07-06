@@ -49,6 +49,18 @@ Si on veut ajouter 5go au /var/log </br>
 lvresize -L+5g /dev/mapper/systemvm-var_log && resize2fs /dev/mapper/systemvm-var_log
 ```
 
+Optimisation des commandes : 
+
+```bash
+
+# lvresize + resize2fs optimisé
+  lvresize --resizefs --size +5G /dev/systemvm/racine
+
+# utilisation du vg à 100%
+  lvresize -l +100%FREE  /dev/mapper/data-var_lib_elasticsearch
+
+```
+
 </br>
 
 Pour ajouter un disque sur Proxmox (sous interface web) <br/>
