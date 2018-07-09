@@ -1,0 +1,22 @@
+# {{ ansible_managed }}
+
+[mysqld]
+skip-name-resolve
+key_buffer = 2G
+query_cache_size = 256M
+query_cache_limit = 8M
+read_rnd_buffer_size = 1M
+read_buffer_size = 1M
+join_buffer_size = 2M
+sort_buffer_size = 2M
+table_cache = 1024
+open_files_limit = 4096 
+max_connections = 600
+innodb_file_per_table = 1
+innodb_buffer_pool_size = 1G
+innodb_additional_mem_pool_size = 16M
+innodb_log_buffer_size = 8M
+innodb_log_file_size = 256M #Attention besoin de : /etc/init.d/mysql stop;rm /var/lib/mysql/ib_logfile*;/etc/init.d/mysql start
+max_heap_table_size = 128M
+tmp_table_size = 128M
+max_connect_errors = 300

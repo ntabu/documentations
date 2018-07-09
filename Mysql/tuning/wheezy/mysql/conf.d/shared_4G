@@ -1,0 +1,20 @@
+[mysqld]
+skip-name-resolve
+key_buffer = 256M
+query_cache_size = 256M
+query_cache_limit = 8M
+read_rnd_buffer_size = 512k
+read_buffer_size = 512k
+join_buffer_size = 2M
+sort_buffer_size = 2M
+table_cache = 1024
+open_files_limit = 3072 
+max_connections = 300
+innodb_file_per_table = 1
+innodb_buffer_pool_size = 256M
+innodb_additional_mem_pool_size = 1M
+innodb_log_buffer_size = 8M
+innodb_log_file_size = 5M #Attention besoin de : /etc/init.d/mysql stop;rm /var/lib/mysql/ib_logfile*;/etc/init.d/mysql start
+max_heap_table_size = 64M
+tmp_table_size = 64M
+max_connect_errors = 300
