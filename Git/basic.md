@@ -47,9 +47,9 @@ Git - Basic
 
 # Forcer la communication vers le git en tls1.2
 
-git config --global --list
-git config --global --unset http.sslVersion
-git config --global --add http.sslVersion tlsv1.2
+  git config --global --list
+  git config --global --unset http.sslVersion
+  git config --global --add http.sslVersion tlsv1.2
 
 ```
 
