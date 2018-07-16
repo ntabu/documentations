@@ -32,13 +32,13 @@ Git - Branch
   git init
 
 # ajout des fichiers et répertoire présent + commit
-git add *
-git commit -m "add new repositeries"
+  git add *
+  git commit -m "add new repositeries"
 
 # configuration du git pour l'ajout dans le bon repositery
-git config --global user.email "<mail>"
-git config --global user.name "Little Pug"
-git push --set-upstream https://github.com/ntabu/indus.git master
+  git config --global user.email "<mail>"
+  git config --global user.name "Little Pug"
+  git push --set-upstream https://github.com/ntabu/indus.git master
 
 
 ```
