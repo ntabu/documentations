@@ -2,12 +2,15 @@ Git - Basic
 ==
 <br/>
 
-#### Commande basique
+#### Commandes basiques
 
 ```bash
 
 # Vérifier la version d'un fichier gitté
   git checkout <nom_fichier>
+
+# show url GIT
+  git remote show origin
 
 # Clone d'un projet en ssh
 # Attention il faut soit créér <ssh_keygen -b 2048>
