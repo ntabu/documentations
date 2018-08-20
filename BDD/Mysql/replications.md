@@ -27,14 +27,14 @@ MySQL [(none)]> show master status;
 | mysql-bin.000780 | 23117087 |              |                  |
 +------------------+----------+--------------+------------------+
 
-#Création du répertoire snap pour monter le snapshot
+#Création du répertoire snap pour monter le snapshot sur le master
 if [ ! -d /mnt/snap ] ; then mkdir /mnt/snap ; fi ; mount /dev/system/snap /mnt/snap
 
 #Suppression des anciens log et bin
 rm /var/lib/mysql/master.info ; rm /var/lib/mysql/relay-log.info ; rm /var/log/mysql/mysql-bin.* ; rm /var/lib/mysql/mysqld-relay-bin.*
 
 #Suppression du /var/lib/mysql (attention il est conseiller de faire un dump ou un export des tables)
-rm -rf /var/lib/mysql/* ; rsync -a <ip_bdd1>:/mnt/snap/ /var/lib/mysql/
+rm -rf /var/lib/mysql/* ; rsync -avp <ip_bdd1>:/mnt/snap/ /var/lib/mysql/
 
 #Boot de la bdd2
 service mysql start bdd2
