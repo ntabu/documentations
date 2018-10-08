@@ -38,6 +38,7 @@ qm monitor <id_vm>
 pci_add auto storage file=/VMs/images/100/vm-100-disk-2.qcow2,if=virtio
 
 # Proxmox ≥ 3.3
+## Vérifier avec info block pour l'id du drive-virtio-diks2 (qm monitor)
 drive_add 0 file=/VMs/images/100/vm-100-disk-2.qcow2,format=qcow2,id=drive-virtio-disk2,if=none
 device_add virtio-blk-pci,scsi=on,drive=drive-virtio-disk2
 
