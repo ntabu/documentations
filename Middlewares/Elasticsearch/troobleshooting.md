@@ -30,9 +30,17 @@ curl -XGET 'http://localhost:9200/_cluster/health?pretty'
 #### Status des nodes
 
 ```bash
+
 curl -XGET 'http://localhost:9200/_cat/nodes'
 rickweb02 192.168.0.3 23 43 1.05 d m rickweb02
 carlweb01 192.168.0.2 10 51 1.09 d * carlweb01
+
+## more informations
+curl -XGET 'http://localhost:9200/_cat/nodes?v&h=id,ip,port,v,m'
+id   ip         port v     m
+nqiB 192.168.0.3 9300 6.0.1 -
+ToJE 192.168.0.2 9300 6.0.1 *
+
 ```
 </br>
 
