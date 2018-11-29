@@ -119,6 +119,28 @@ curl http://localhost:9200/_cluster/'health?pretty'
 
 ```
 
+#### Exclude/Include Node ES
+
+```bash
+## Exclude
+# Cluster 2 nodes : rick & michonne
+curl -XPUT 'http://localhost:9200/_cluster/settings?pretty' -d ' { "transient" : { "cluster.routing.allocation.exclude._name" : "rick"  } }'
+
+# Restart du ES pour prise en compte (possibilité de le faire en rolling restart)
+/etc/init.d/elasticsearch restart
+
+# permet de voir les exclusions
+curl -XGET 'http://localhost:9200/_cluster/settings?pretty'
+
+## Include
+curl -XPUT 'http://localhost:9200/_cluster/settings?pretty' -d ' { "transient" : { "cluster.routing.allocation.include._name" : "rick,michonne"  } }'
+
+# Restart du ES pour prise en compte (possibilité de le faire en rolling restart)
+/etc/init.d/elasticsearch restart
+
+```
+
+
 #### Informations Node
 
 https://www.elastic.co/guide/en/elasticsearch/guide/2.x/_monitoring_individual_nodes.html#_indices_section
