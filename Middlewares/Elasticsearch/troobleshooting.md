@@ -236,7 +236,7 @@ PUT /_cluster/settings
 ```bash
 # Erreur de type : Content-Type header [application/x-www-form-urlencoded] is not supported
 # pour des versions supérieurs à 2.0
-# H 'Content-Type: application/json'
+# -H 'Content-Type: application/json'
 curl -XPUT http://localhost:9200/_cluster/settings -H 'Content-Type: application/json' -d '{"transient":{"cluster.routing.allocation.enable":"all"}}'
 ```
 
