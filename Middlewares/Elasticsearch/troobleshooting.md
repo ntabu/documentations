@@ -88,6 +88,26 @@ curl -XPOST 'localhost:9200/_cluster/reroute' -d '{
     }';
 ```
 
+#### Heap SIZE
+
+```bash
+
+## Affiche la mémoire utilisé par node
+curl -sS -XGET "localhost:9200/_cat/nodes?h=heap*&v"
+
+## Deniere version ES
+## dans jvm.options
+
+# Xms represents the initial size of total heap space
+# Xmx represents the maximum size of total heap space
+
+-Xms12g
+-Xmx12g
+
+# ici on utilise 12Go pour un moteur java lancé
+
+```
+
 #### Assignement de réplicas à 0
 
 Penser à mettre dans les paramètres sur un standalone, le replica à 0
