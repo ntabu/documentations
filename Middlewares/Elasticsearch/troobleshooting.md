@@ -167,6 +167,8 @@ https://www.elastic.co/guide/en/elasticsearch/guide/2.x/_monitoring_individual_n
 
 ```bash
 
+curl -XGET "http://localhost:9200/_cluster/allocation/explain?pretty"
+
 curl -XGET "http://localhost:9200/_nodes/stats?pretty=true"
 
 curl -XGET "http://localhost:9200/_nodes/michonne/stats/indices/search?pretty"
@@ -217,7 +219,6 @@ curl -XGET "http://localhost:9200/_nodes/michonne/stats/indices/search?pretty"
 # plus la durée de chaque requête est longue, et vous devriez envisager un réglage/optimisation.
 
 ```
-
 #### Modifications type de la configuration ES
 
 <li> Max thread count & throttle </li>
