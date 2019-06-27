@@ -34,6 +34,7 @@ if [ ! -d /mnt/snap ] ; then mkdir /mnt/snap ; fi ; mount /dev/system/snap /mnt/
 rm /var/lib/mysql/master.info ; rm /var/lib/mysql/relay-log.info ; rm /var/log/mysql/mysql-bin.* ; rm /var/lib/mysql/mysqld-relay-bin.*
 
 #Suppression du /var/lib/mysql (attention il est conseiller de faire un dump ou un export des tables)
+#Attention au fichier auto.cnf si présent sur le master, à supprimer apres le rsync sur le slave
 rm -rf /var/lib/mysql/* ; rsync -avp <ip_bdd1>:/mnt/snap/ /var/lib/mysql/
 
 #Boot de la bdd2
