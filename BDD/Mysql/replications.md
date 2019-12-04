@@ -15,7 +15,7 @@ service mysql stop	//ou /etc/init.d/mysql stop
 
 #Flush des tables et créations du snapshot
 mysql
-MySQL [(none)]> FLUSH TABLES WITH READ LOCK; SHOW MASTER STATUS; system lvcreate -s -L 10G -n snap2 /dev/systemvm/var_lib_mysql; UNLOCK TABLES;
+MySQL [(none)]> FLUSH TABLES WITH READ LOCK; SHOW MASTER STATUS; system lvcreate -s -L 10G -n snap /dev/system/var_lib_mysql; UNLOCK TABLES;
 Query OK, 0 rows affected (0.00 sec)
 
 #Voir la position du bin
@@ -35,7 +35,7 @@ rm /var/lib/mysql/master.info ; rm /var/lib/mysql/relay-log.info ; rm /var/log/m
 
 #Suppression du /var/lib/mysql (attention il est conseiller de faire un dump ou un export des tables)
 #Attention au fichier auto.cnf si présent sur le master, à supprimer apres le rsync sur le slave
-rm -rf /var/lib/mysql/* ; rsync -avp <ip_bdd1>:/mnt/snap/ /var/lib/mysql/
+rm -rf /var/lib/mysql/* ; rsync -avp <ip_bdd1>:/mnt/snap/* /var/lib/mysql/
 
 #Boot de la bdd2
 service mysql start bdd2
