@@ -119,6 +119,8 @@ index.number_of_replicas: 0
 
 for i in $(curl -XGET http://localhost:9200/_cat/shards |grep UNA |awk {'print $1'}) ; do curl -XPUT 'localhost:9200/'$i'/_settings' -d '{"number_of_replicas": 0}' ; done
 
+## ES > 5
+curl -XPUT "http://localhost:9200/*/_settings" -H 'Content-Type: application/json' -d '{"settings":{"number_of_replicas":"0"}}'
 ```
 
 
