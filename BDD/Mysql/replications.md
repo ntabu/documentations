@@ -33,7 +33,7 @@ rm /var/lib/mysql/master.info ; rm /var/lib/mysql/relay-log.info ; rm /var/log/m
 
 #Suppression du /var/lib/mysql (attention il est conseiller de faire un dump ou un export des tables)
 #Attention au fichier auto.cnf si présent sur le master, à supprimer apres le rsync sur le slave
-rm -rf /var/lib/mysql/* ; rsync -avp /mnt/snap/* root@'<hostname>:/var/lib/mysql/
+rm -rf /var/lib/mysql/* ; rsync -avp /mnt/snap/* root@'<hostname>:/var/lib/mysql/'
 
 #Boot de la bdd2
 service mysql start bdd2
