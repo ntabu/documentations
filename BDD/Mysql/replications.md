@@ -7,8 +7,6 @@ Dans le cas d un master/master
 #### Remise en place replication sur master bdd2
 
 ```bash
-#stop slave sur bdd1
-mysql -e "stop slave;"
 
 #arrêt de mysql sur bdd2
 service mysql stop	//ou /etc/init.d/mysql stop
@@ -35,7 +33,7 @@ rm /var/lib/mysql/master.info ; rm /var/lib/mysql/relay-log.info ; rm /var/log/m
 
 #Suppression du /var/lib/mysql (attention il est conseiller de faire un dump ou un export des tables)
 #Attention au fichier auto.cnf si présent sur le master, à supprimer apres le rsync sur le slave
-rm -rf /var/lib/mysql/* ; rsync -avp <ip_bdd1>:/mnt/snap/* /var/lib/mysql/
+rm -rf /var/lib/mysql/* ; rsync -avp /mnt/snap/* root@'<hostname>:/var/lib/mysql/
 
 #Boot de la bdd2
 service mysql start bdd2
@@ -63,6 +61,7 @@ Query OK, 0 rows affected (0.01 sec)
 #Start du slave bdd1
 mysql -e "start slave;"
 
+#Si problème d'ID, supprimer sur le slave (bdd2), le fichier auto.cnf
 ```
 
 Finish !!!
